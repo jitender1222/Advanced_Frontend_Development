@@ -1,0 +1,48 @@
+
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: red;
+    height: 60px;
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#section {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    height: 100vh; /* Use viewport height (100% of the viewport height) */
+}
+
+#section > div {
+    text-align: center;
+    height: 100%;
+    padding-top: 40px;
+}
+
+#section > div:first-child,
+#section > div:last-child {
+    width: 100px;
+    background-color: rgb(246, 164, 10);
+}
+
+#section > div:nth-child(2) {
+    flex: 1; /* This makes the second column take up the remaining space */
+    background-color: lightyellow;
+}
+
+#footer{
+    background-color: rgb(128, 124, 124);
+    height: 60px;
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 10px;
+    text-align: center;
+}
