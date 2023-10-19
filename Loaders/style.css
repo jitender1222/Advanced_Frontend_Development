@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: drop 1s linear infinite;
+}
+
+.loader > div{
+    height: 2rem;
+    width: 2rem;
+    border: 5px solid grey;
+    border-radius: 50%;
+}
+
+@keyframes drop {
+
+    0%{
+        transform: scale(1,1);
+        border-color: grey;
+        opacity: 1;
+    }
+    25%{
+        transform: scale(1.5,1.5);
+        border-color: rgb(223, 216, 216);
+        /* opacity: 1; */
+    }
+    50%{
+        transform: scale(2,2);
+        border-color: rgb(240, 233, 233);
+        /* opacity: 1; */
+    }
+    /* 80%{
+        transform: scale(1.75,1.75);
+        border-color: rgb(240, 235, 235);
+        /* opacity: 1; 
+    } */
+    100%{
+        transform: scale(1,1);
+        border-color: grey;
+        /* opacity: 1; */
+    }
+}
