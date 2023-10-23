@@ -42,3 +42,12 @@
     background-color:darkred;
     color:rgb(243, 178, 178);
 }
+.image{
+    position: relative;
+}
+
+.image>div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
