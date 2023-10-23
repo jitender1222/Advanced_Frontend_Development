@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.first-image,.second-image,.third-image,.fourth-image{
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.first-image{
+    background-image: url(./img/1.jpeg);
+    height: 500px;
+}
+
+.second-image{
+    background-image: url(./img/2.jpeg);
+    height: 500px;
+}
+
+.third-image{
+    background-image: url(./img/3.jpeg);
+    height: 500px;
+}
+
+.fourth-image{
+    background-image: url(./img/4.jpeg);
+    height: 500px;
+}
+
+.section-light{
+    text-align: center;
+    padding: 4rem 3rem;
+    background-color: rgb(255, 240, 221);
+    color:#363434;
+}
+
+.section-dark{
+    text-align: center;
+    padding: 4rem 3rem;
+    background-color:darkred;
+    color:rgb(243, 178, 178);
+}
