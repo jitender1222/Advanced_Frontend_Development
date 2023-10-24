@@ -49,5 +49,9 @@
 .image>div{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 30%;
+    color:darkgoldenrod;
+    font-size: 40px;
+    letter-spacing: 12px;
+    font-weight: bold;
 }
