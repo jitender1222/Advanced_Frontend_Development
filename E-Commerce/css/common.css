@@ -6,6 +6,9 @@
 
 :root{
     --blue-gray: #ecf0f1;
+    --pale-blue:  #2c3e50;
+    --jean-blue: #3b5875;
+    --mid-gray: #999;
 }
 
 #header{

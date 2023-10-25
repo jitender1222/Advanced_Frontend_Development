@@ -1,0 +1,43 @@
+.home-title{
+    font-size: 3.5rem;
+    margin-top: 5rem;
+    letter-spacing: 1rem;
+}
+
+.category-title{
+
+    margin-top: 3.5rem;
+    font-size: 1.5rem;
+}
+
+.categorylist{
+
+    margin-top: 3rem;
+    font-size: 1.5rem;
+}
+
+.category-item{
+
+    border: 1px solid var(--pale-blue);
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: 4px 4px 2px var(--mid-gray);
+    background-color: var(--jean-blue);
+    border-radius: 10px;
+}
+
+.category-item a{
+
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.category-item:hover{
+
+    background-color: var(--pale-blue);
+    box-shadow: 0px 0px;
+    transition: box-shadow 0.15s linear 0s;
+}
