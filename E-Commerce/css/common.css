@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --blue-gray: #ecf0f1;
+}
+
+#header{
+
+    background-color: var(--blue-gray);
+    padding: 1.5rem 0;
+}
+
+#header .header-wrapper .logo{
+
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+#header .header-wrapper .logo a{
+
+    color: black;
+    letter-spacing: 5px;
+}
+
+#header .header-wrapper .user-actions{
+
+    font-size: 1rem;
+    line-height: 1.5;
+    gap: 1rem;
+}
+
+#header .header-wrapper .user-actions .logout-btn{
+
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
+
+#header .header-wrapper .user-actions a{
+
+    color: black;
+    text-decoration: none;
+}
+
+#header .header-wrapper .user-actions a:hover{
+
+    color: blue;
+}
