@@ -11,3 +11,38 @@
 
     width: 100%;
 }
+
+.product-details-box{
+
+    flex-basis:60%;
+}
+
+.product-name{
+
+    font-size:4rem;
+}
+
+.product-price{
+
+    margin-top: 1rem;
+    font-size: 1.75rem;
+}
+
+.product-description-title{
+
+    margin-bottom: 1rem;
+    color: var(--mid-gray);
+}
+
+.product-description-data{
+
+    line-height: 1.75;
+    font-size: 1rem;
+    text-align: justify;
+
+}
+
+.product-details-action{
+    margin-top: 1rem;
+    width: 250px;
+}
