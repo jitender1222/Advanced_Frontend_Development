@@ -234,3 +234,58 @@ X -> null -> cannot be comes in any of the above steps
 Y-> false -> y is a boolean -> ToNumber -> 0 
 
 null == 0 -> again compare -> did not comes in any of the above steps so in the last we will return `false`.
+
+
+## Strict Equality Comparison (===)
+
+`For Numbers`
+
+x is different from y return `false`.
+
+x-> number 
+
+1.1 x-> NaN return false
+
+1.2-> y-> NaN return false
+
+1.3-> x is same as y return true
+
+1.4-> x-> +0 y-> -0 return true and `vice versa` is also `true`
+
+x-> non number 
+
+2.1-> x-> Undefined -> true
+
+2.2-> x-> Null -> true
+
+2.3-> x-> String 
+
+    2.3.1 -> x and y are `exactly` same i.e by length code units at the indices return `true` else return `false`
+
+2.4-> x-> boolean 
+
+    2.4.1 -> x and y both `true` or `false` return `true` else return `false`.
+
+2.5-> x-> symbol 
+
+    2.5.1 -> x and y both `symbol` return `true` else `false`
+
+2.6-> x and y same object return `true` else `false`
+
+
+## Example 
+
+let obj1= {x:10}
+
+let obj2= {x:10}
+
+let obj3= {y:10}
+
+let obj1= {x:10}
+
+console.log(obj1===obj2); -> gives `false `because it will allocate to the `different` memory location.
+
+console.log(obj1===obj3); -> gives `false `because it will allocate to the `different` memory location.
+
+console.log(obj1===obj1); -> gives `true` because it will allocate to the same memory location.
+
