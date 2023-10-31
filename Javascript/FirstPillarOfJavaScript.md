@@ -197,8 +197,40 @@ Except the above it always return `true` these are truthy value.
 
 Example` -29` gives ->` true`
 
+## Abstract equality comparison (==)
+
+x-> null and y-> undefined return `true` and `vice versa` is also `true`
+
+x-> Number y-> string -> convert y-> `ToNumber` and then again does `comparison`
+
+x-> String y-> number -> convert x->` ToNumber` and then again does `comparison`
+
+x-> bool convert x-> `ToNumber` and does `comparison` and `vice versa`
+
+x-> is either Number,String or Symbol
+                 and 
+y-> Object -> We convert Y to `ToPrimitive` and then does the comparison and `vice versa`
 
 
+If nothing is follow from the above steps then we can simply return **`false`**
 
 
+### Example
 
+console.log(12=="12") -> true
+
+console.log(false == "0") -> true 
+
+false -> `convert into a Number` -> 0 
+
+"0" -> `convert into a Number` -> 0
+
+console.log(0==0) -> `true`
+
+console.log(null==false) -> false
+
+X -> null -> cannot be comes in any of the above steps 
+
+Y-> false -> y is a boolean -> ToNumber -> 0 
+
+null == 0 -> again compare -> did not comes in any of the above steps so in the last we will return `false`.
