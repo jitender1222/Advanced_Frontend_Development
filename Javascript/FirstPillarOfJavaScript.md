@@ -143,11 +143,59 @@ In this case `[object object]` we cannot convert it into an `Number` so it will 
 
 console.log(10-NaN) give -> **`Nan`** 
  
+**Note** -> If `toString` also gives us an object it will throw an `exception error` 
+
+Example
 
 
+    let obj={
+      x:7 , 
+      toString() {
+         return {} 
+       }
+      }
 
+It will give us an `error` 
  
 
+
+## Addition Operator(+)
+
+**Step 1**
+
+It takes the `lefthand ` and `righthand` side value. 
+
+**Step 2**
+
+It tries to convert them into the `ToPrimitive`.There is no `hint` present
+
+**Step 3**
+
+If the type of any of the side `left` and `right` is a `String` then it will convert them into a `String` and return the `concatination` of both left and right side.
+
+**Step 4**
+
+If the type of any of the side is not `String` then it will convert them into a `Number` and return it.
+
+
+**Ques** 
+
+let obj={};
+
+console.log(obj);
+
+console.log("18" +  obj ); -> 18[object object]
+
+console.log(18 +  obj ); 18[object object]
+
+
+## Boolean value
+
+**Undefined, Null, +0, -0, NaN** -> return `false` these are falsy value.
+
+Except the above it always return `true` these are truthy value.
+
+Example` -29` gives ->` true`
 
 
 
