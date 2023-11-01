@@ -289,3 +289,55 @@ console.log(obj1===obj3); -> gives `false `because it will allocate to the `diff
 
 console.log(obj1===obj1); -> gives `true` because it will allocate to the same memory location.
 
+
+## Corner Cases
+
+    -> console.log(" " + 0 or (-0) ); 
+     0-> "0"
+
+  output -> 0 
+    
+    -> console.log(" " + [] );
+     [] -> " "
+
+  output -> " "
+    
+
+    -> console.log(" " + {});
+     {} -> [object object]
+     
+  output -> [object object]
+    
+    ->console.log(" " + [1,2,3,4]);
+     
+  output -> 1,2,3,4
+
+    -> console.log(" " + [null,undefined]);
+     [null,undefined] -> NaN
+
+  output -> NaN 
+
+
+**TONUMBER** 
+
+      -> console.log(0 - "010");
+     "010" -> convert into -> decimal
+
+  output-> -10
+
+      -> console.log(0 - "O10");
+     "O10" -> follwed by O which cannot be converted result NaN
+
+  output -> NaN
+
+     -> console.log(0 - 010);
+     010 -> here it is a Number not a String convert it into -> Octal Number
+  
+  output -> -8
+    
+     -> console.log(0 - "0xb");
+     010 -> convert it into -> Hexadecimal Number
+    
+  output -> -11
+
+      
