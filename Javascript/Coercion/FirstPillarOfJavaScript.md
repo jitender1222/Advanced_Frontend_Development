@@ -340,4 +340,23 @@ console.log(obj1===obj1); -> gives `true` because it will allocate to the same m
     
   output -> -11
 
-      
+    ``  
+
+
+## Explicit Cohersion
+
+
+    console.log(1<2<3) 
+
+    1<2 =true
+    true< 3 (true means 1)  1<3 = true
+
+output -> true
+
+    console.log(3>2>1) 
+
+    3>2 = true
+    true>1 (true means 1) 1>2 =false
+
+output -> false
+
