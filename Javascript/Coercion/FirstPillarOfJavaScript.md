@@ -360,3 +360,30 @@ output -> true
 
 output -> false
 
+
+###  write a custom function that can give us sign of a number properly in javascript
+
+
+We already have a `inbuilt` function in javascript `Math.sign()` that can give us the sign of a number.
+
+
+     console.log(Math.sign(3));
+Expected output: 1
+
+     console.log(Math.sign(-3));
+Expected output: -1
+
+     console.log(Math.sign(0));
+Expected output: 0
+
+     console.log(Math.sign('-3'));
+Expected output: -1
+
+
+Manually write the above function
+
+       function sign(x) 
+       { 
+        return x > 0 ? 1 : x < 0 ? -1 : 0; 
+      }
+
