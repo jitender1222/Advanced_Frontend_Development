@@ -279,3 +279,122 @@ inside the pending state the value remain as `undefined`
 
 with whatever `args` we call resolve and reject with gets assigned to the value property.
 
+
+
+**write a function to download data from a URL**
+
+   ```
+   function downloadData(url,cb){
+
+    console.log("downloading data from url",url);
+
+    setTimeout(function down(){
+        console.log("download completed);
+        const content="ABCDEF";
+        cb(content);
+    },5000)
+   }
+
+   donwloadData("www.xyz.com",function process(content){
+    console.log("download data is:",content);
+   })
+
+   ```
+
+**Write a function to save that downloaded data in a file and return that filename**   
+
+
+```
+
+    function writeFile(data,cb){
+
+        console.log("started writing the file with the given data",data);
+
+        setTimeout(function writeData(){
+            console.log("completed writing the data in a file ");
+            const filename="file.txt";
+            cb(filename);
+        },5000)
+
+    }
+
+    writeFile("abcdef",function process(name){
+        console.log("file written with name",name);
+    })
+
+```
+
+**Write a function to upload the file written in the previous step to a URL**
+
+
+```
+
+    function uploadFile(url,filename,cb){
+
+        console.log("uploading start with the filename",filename,"to a URL",url);
+
+        setTimeout(function upload(){
+            console.log("file uploaded successfully");
+            const response=SUCCESS
+            cb(response);
+        },5000)
+    }
+
+    uploadFile(file.txt,function process(filename){
+        console.log("fileuploaded successfully",filname)
+    })
+
+```
+
+**Combine all of the above 3**
+
+```
+
+function downloadData(url,cb){
+
+    console.log("downloading data from url",url);
+
+    setTimeout(function down(){
+        console.log("download completed);
+        const content="ABCDEF";
+        cb(content);
+    },5000)
+   }
+
+   function writeFile(data,cb){
+
+        console.log("started writing the file with the given data",data);
+
+        setTimeout(function writeData(){
+            console.log("completed writing the data in a file ");
+            const filename="file.txt";
+            cb(filename);
+        },5000)
+
+    }
+
+    function uploadFile(url,filename,cb){
+
+        console.log("uploading start with the filename",filename,"to a URL",url);
+
+        setTimeout(function upload(){
+            console.log("file uploaded successfully");
+            const response=SUCCESS;
+            cb(response);
+        },5000)
+    }
+
+    download("www.xyz.com",function process (value)){
+
+        console.log("we are going to process the downloaded data",value);
+
+        writeFile(value,function processFileName(filename){
+            console.log("we have downloaded and written the file now will upload");
+
+            uploadFile("www.upload.com",filename,function processUpload(response){
+                console.log("we have uploaded the file with",response);
+            })
+        })
+    }
+
+```
