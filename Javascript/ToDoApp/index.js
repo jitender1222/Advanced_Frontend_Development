@@ -22,12 +22,43 @@ todoInputBar.addEventListener("keyup",function toggleSaveButton(){
 saveBtn.addEventListener("click",function getTextAndAddTodo(){
     
     let todoText=todoInputBar.value;
-
+    let todos={text:todoText, status:"In Progress",finishBtnText:"Finished"}
     if(todoText.length==0) return;
-    todo.push(todoText);
-    addTodo(todoText,todo.length);
+    todo.push(todos);
+    addTodo(todos,todo.length);
     todoInputBar.value=" "
 })
+
+function reRender(){
+    todo.forEach((element,idx)=>{
+        addTodo(element,idx+1);
+    })
+}
+
+function finishedTodo(event){
+
+    let finishedBtnPressed=event.target;
+    let indexToBeFinished=Number(finishedBtnPressed.getAttribute("todo-idx"));
+
+    if(todo[indexToBeFinished].status=="Finished"){
+        todo[indexToBeFinished].status="In Progress";
+        todo[indexToBeFinished].finishBtnText="Finished"
+    }
+    else{
+        todo[indexToBeFinished].status="Finished";
+        todo[indexToBeFinished].finishBtnText="Undo"
+    }
+    todo.sort((a,b)=>{
+
+        if(a.status=="Finished"){
+            return 1;
+        }
+        return -1;
+    })
+
+    todoDataList.innerHTML="";
+    reRender();
+}
 
 function removeTodo(event){
     
@@ -35,10 +66,7 @@ function removeTodo(event){
     let indexToBeRemoved=Number(dltBtnPressed.getAttribute("todo-idx"));
     todo.splice(indexToBeRemoved,1);
     todoDataList.innerHTML="";
-    todo.forEach((element,idx)=>{
-        addTodo(element,idx+1);
-    })
-
+    reRender();
 }
 
 function addTodo(todoData,todoCount){
@@ -55,13 +83,16 @@ function addTodo(todoData,todoCount){
 
     todoNo.textContent=`${todoCount}`;
     console.log("todoCoubt",todoCount)
-    todoDeatil.textContent=todoData;
-    todoStatus.textContent="In progress";
+    todoDeatil.textContent=todoData.text;
+    todoStatus.textContent=todoData.status;
     dltButton.textContent="Delete";
-    finishedButton.textContent="Finished";
+    finishedButton.textContent=todoData.finishBtnText;
 
+    finishedButton.setAttribute("todo-idx",todoCount-1);
     dltButton.setAttribute("todo-idx",todoCount-1);
+
     dltButton.onclick=removeTodo;
+    finishedButton.onclick=finishedTodo;
 
     todoActions.appendChild(dltButton);
     todoActions.appendChild(finishedButton);
