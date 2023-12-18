@@ -3,7 +3,13 @@
 let todoDataList=document.getElementById("todo-data-list");
 let saveBtn=document.getElementById("save-todo");
 let todoInputBar=document.getElementById("todo-input-bar");
+let pendingTodos=document.getElementById("get-todos");
 let todo=[];
+
+pendingTodos.addEventListener("click",()=>{
+    todo=todo.filter((todo)=> todo.status!="Finished");
+    reRender();
+})
 
 todoInputBar.addEventListener("keyup",function toggleSaveButton(){
 
@@ -30,6 +36,7 @@ saveBtn.addEventListener("click",function getTextAndAddTodo(){
 })
 
 function reRender(){
+    todoDataList.innerHTML="";
     todo.forEach((element,idx)=>{
         addTodo(element,idx+1);
     })
@@ -55,8 +62,6 @@ function finishedTodo(event){
         }
         return -1;
     })
-
-    todoDataList.innerHTML="";
     reRender();
 }
 
@@ -65,8 +70,33 @@ function removeTodo(event){
     let dltBtnPressed=event.target;
     let indexToBeRemoved=Number(dltBtnPressed.getAttribute("todo-idx"));
     todo.splice(indexToBeRemoved,1);
-    todoDataList.innerHTML="";
     reRender();
+}
+
+function editTodo(event){
+
+    let editBtnPressed=event.target;
+    let indexToEdit=Number(editBtnPressed.getAttribute("todo-idx"));
+    let detailDiv=document.querySelector(`div[todo-idx="${indexToEdit}"]`);
+    let input=document.querySelector(`input[todo-idx="${indexToEdit}"]`);
+
+    detailDiv.style.display="none";
+    input.type="text";
+    input.value=detailDiv.textContent;
+}
+
+function saveEditTodo(event){
+
+    let input=event.target;
+    let indexToEdit=Number(input.getAttribute("todo-idx"));
+    let detailDiv=document.querySelector(`div[todo-idx="${indexToEdit}"]`);
+
+    if(event.keyCode==13){
+        detailDiv.textContent=input.value;
+        detailDiv.style.display="block";
+        input.value="";
+        input.type="hidden";
+    }
 }
 
 function addTodo(todoData,todoCount){
@@ -79,6 +109,8 @@ function addTodo(todoData,todoCount){
     let todoActions=document.createElement("div");
     let dltButton=document.createElement("button");
     let finishedButton=document.createElement("button");
+    let edit=document.createElement("button");
+    let hiddenInput=document.createElement("input");
     let hr=document.createElement("hr");
 
     todoNo.textContent=`${todoCount}`;
@@ -86,18 +118,27 @@ function addTodo(todoData,todoCount){
     todoDeatil.textContent=todoData.text;
     todoStatus.textContent=todoData.status;
     dltButton.textContent="Delete";
+    edit.textContent="Edit";
     finishedButton.textContent=todoData.finishBtnText;
 
     finishedButton.setAttribute("todo-idx",todoCount-1);
     dltButton.setAttribute("todo-idx",todoCount-1);
+    edit.setAttribute("todo-idx",todoCount-1);
+    hiddenInput.setAttribute("todo-idx",todoCount-1);
+    todoDeatil.setAttribute("todo-idx",todoCount-1);
+    hiddenInput.addEventListener("keypress",saveEditTodo);
 
     dltButton.onclick=removeTodo;
     finishedButton.onclick=finishedTodo;
+    edit.onclick=editTodo;
+    hiddenInput.type="hidden";
 
     todoActions.appendChild(dltButton);
     todoActions.appendChild(finishedButton);
+    todoActions.appendChild(edit);
 
     todoItem.appendChild(todoNo);
+    todoItem.appendChild(hiddenInput);
     todoItem.appendChild(todoDeatil);
     todoItem.appendChild(todoStatus);
     todoItem.appendChild(todoActions);
@@ -117,6 +158,8 @@ function addTodo(todoData,todoCount){
     todoDeatil.classList.add("todo-detail","text-muted");
     todoStatus.classList.add("todo-status","text-muted");
     dltButton.classList.add("btn","btn-danger","dlt-todo");
+    edit.classList.add("btn","btn-warning","edit-btn")
     finishedButton.classList.add("btn","btn-success","finished-todo")
+    hiddenInput.classList.add("form-control","todo-detail")
 
 }
