@@ -1,6 +1,6 @@
 
 
-let todoDataSection=document.getElementById("todo-data");
+let todoDataList=document.getElementById("todo-data-list");
 let saveBtn=document.getElementById("save-todo");
 let todoInputBar=document.getElementById("todo-input-bar");
 let todo=[];
@@ -29,6 +29,18 @@ saveBtn.addEventListener("click",function getTextAndAddTodo(){
     todoInputBar.value=" "
 })
 
+function removeTodo(event){
+    
+    let dltBtnPressed=event.target;
+    let indexToBeRemoved=Number(dltBtnPressed.getAttribute("todo-idx"));
+    todo.splice(indexToBeRemoved,1);
+    todoDataList.innerHTML="";
+    todo.forEach((element,idx)=>{
+        addTodo(element,idx+1);
+    })
+
+}
+
 function addTodo(todoData,todoCount){
 
     let rowDiv=document.createElement("div");
@@ -42,10 +54,14 @@ function addTodo(todoData,todoCount){
     let hr=document.createElement("hr");
 
     todoNo.textContent=`${todoCount}`;
+    console.log("todoCoubt",todoCount)
     todoDeatil.textContent=todoData;
     todoStatus.textContent="In progress";
     dltButton.textContent="Delete";
     finishedButton.textContent="Finished";
+
+    dltButton.setAttribute("todo-idx",todoCount-1);
+    dltButton.onclick=removeTodo;
 
     todoActions.appendChild(dltButton);
     todoActions.appendChild(finishedButton);
@@ -58,7 +74,7 @@ function addTodo(todoData,todoCount){
     rowDiv.appendChild(todoItem);
     rowDiv.appendChild(hr);
 
-    todoDataSection.appendChild(rowDiv);
+    todoDataList.appendChild(rowDiv);
 
 
     // adding classes 
@@ -69,7 +85,7 @@ function addTodo(todoData,todoCount){
     todoActions.classList.add("todo-actions","d-flex","justify-content-start","gap-2")
     todoDeatil.classList.add("todo-detail","text-muted");
     todoStatus.classList.add("todo-status","text-muted");
-    dltButton.classList.add("btn","btn-danger");
-    finishedButton.classList.add("btn","btn-success")
+    dltButton.classList.add("btn","btn-danger","dlt-todo");
+    finishedButton.classList.add("btn","btn-success","finished-todo")
 
 }
