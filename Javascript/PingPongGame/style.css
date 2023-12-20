@@ -21,6 +21,7 @@ html{
     height:50px;
     background-color: blue;
     position: absolute;
+    margin-left: 2px;
 }
 
 #ball{
