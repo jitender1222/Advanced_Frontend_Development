@@ -12,15 +12,15 @@ html{
     width: 700px;
     height: 300px;
     border: 2px solid black;
+    position: relative;
 }
 
 #paddle{
 
     width: 15px;
     height:50px;
-    margin-left: 20px;
-    margin-top: 20px;
     background-color: blue;
+    position: absolute;
 }
 
 #ball{
@@ -28,5 +28,5 @@ html{
     width: 20px;
     border-radius: 50%;
     background-color: red;
-    margin-left: 20px;
+    position: absolute;
 }
