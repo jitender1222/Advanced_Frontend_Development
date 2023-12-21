@@ -1,0 +1,13 @@
+.outer{
+    background-color: grey;
+    width:600px;
+    height:400px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.outer image{
+
+    width: 50%;
+    height: 50%;
+}

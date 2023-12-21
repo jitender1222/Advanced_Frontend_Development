@@ -19,8 +19,20 @@ document.addEventListener("DOMContentLoaded",()=>{
         ball.style.left= `${ballX}px` ;
         ball.style.top=  `${ballY}px`;
 
-        console.log(ballY);
-        if(ballX < paddle.offsetWidth + paddle.offsetLeft && ballY > paddle.offsetTop && ballY - ball.offsetHeight < paddle.offsetTop + paddle.offsetHeight ){
+        /*
+        * ballX < paddle.offsetWidth + paddle.offsetLeft -> if left (w.r.t) of ball < right (w.r.t) of ball 
+
+        * ballY > paddle.offsetTop -> if top of ball > top of paddle
+        
+        * ballY + ball.offsetHeight < padding.offsetTop + paddle.offsetHeight ->
+
+        * ballY + ball.offsetHeight -> bottom of ball
+
+        * paddle.offsetTop + paddle.offsetHeight -> bottom of the paddle
+
+        */
+
+        if(ballX < paddle.offsetWidth + paddle.offsetLeft && ballY > paddle.offsetTop && ballY + ball.offsetHeight < paddle.offsetTop + paddle.offsetHeight ){
             dx*=-1;
         }
 
@@ -47,6 +59,16 @@ document.addEventListener("DOMContentLoaded",()=>{
         }
 
         paddle.style.top=`${paddleY}px`
+    })
+
+    document.addEventListener("mousemove",(event)=>{
+        let mouseDistanceFromTheTop=event.clientY; // this is the distance of the mouse point from the top of the screen.
+        let distanceOfTableFromTop=table.offsetTop;
+
+        let mousePointControl = mouseDistanceFromTheTop - distanceOfTableFromTop - paddle.offsetHeight/2;
+        paddleY=mousePointControl;
+        if(paddleY <= 0 || paddleY > table.offsetHeight - paddle.offsetHeight) return ;
+        paddle.style.top=`${paddleY}px`;
     })
 
 });
