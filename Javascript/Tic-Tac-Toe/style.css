@@ -1,0 +1,26 @@
+h1{
+    text-align: center;
+}
+.outer{
+
+    width: 500px ;
+    height: 500px;
+    border: 2px solid black;
+    padding: 10px;
+    margin-left:30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner{
+    border: 1px solid red;
+    height:150px;
+    width: 100px;
+    flex-basis: 30%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
