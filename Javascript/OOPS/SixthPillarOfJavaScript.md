@@ -187,3 +187,93 @@ Output ->
  here `this` will call to the brand new empty object so it will create a `key and value` pair inside the object key is `name` and value is `dress` and so on.
 
 ` Note` -> inside js we can't do constructor overloading.
+
+
+### `Remember`
+
+In other Programming languages like C++ or Java the objects are based on their classes we can also say that their is no linkage bw the class and the object.
+
+Once the object is created and when we change anything inside the class it does not reflect those changes to that object.
+
+
+**`In JS things behave differently objects are linked to their classes. `**
+
+
+**`Prototypes`**
+
+
+It is mechanism by which js objects inherites features from one another.
+
+Whenever we create a object that objects get some properties from their prototypes.
+
+
+Every object that we created has a `prototype` in it this `prototype` property is an object itself and we can add properties like data memebers member function after the creation of an object and because in js we did not make copies anything change in the prototype can reflect this change to the object.
+
+
+### Underlying structure of JS Prototype
+
+**`Inside the internal JS`**
+
+Inside the `internal js environment ` we have an `entity` which is a `function` named as `object`.
+
+We have one more `unnamed` entity.
+
+On our first entity we have a property named as `prototype` which points to the `second` entity.
+
+when we do `object.prototype` we refer to the `unnamed` entity.
+
+Inside the `second` entity we have a lot of function written inside it like `to string value of isPrototype etc.` 
+
+From the second entity their is a property which refers to the first entity named as `constructor`
+
+
+**`Inside the external JS`**
+
+This is the area in where we code .
+
+Let's say we created a `function` named as` Product` so by default there is one more `entity` created which is an `object `.
+
+To refer this object we can do `product.prototype` and to go back from this `object` there is a `constructor` which points back to the `first` entity .
+
+
+`Note` -> There is a hidden relationship that exist b/w both of this hidden `objects`.
+
+
+
+```
+
+function Product(n){
+
+    this.name=n;
+}
+
+let d= new Product("iphone");
+
+Product.prototype.display=function() {
+    console.log("name of the product is",this.name)
+};
+
+```
+
+when we do `Product.prototype.display` we will adding a key `display` along with the function associated with it to the `unnamed` object.
+
+
+when we create a new object by using `New` keyword there are 4 steps that will be executed.
+
+1. It creates an empty object.
+
+2. It does some kind of linkage. `(In this case the linkage is b/w the empty object that is created in the first step  and the unnamed object which refers to product.prototype )
+`
+3. Calls the function with `this` property assigned to the empty object it created before.
+
+4. Then it starts executes the function. 
+
+Note -> If the function doesn't return any specific object then it automatically return `this`.
+
+Otherwise it `return` the object return by you.
+
+
+
+  
+
+
