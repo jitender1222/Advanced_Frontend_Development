@@ -1,0 +1,12 @@
+.grid{
+    display: flex;
+    gap: 0.5rem;
+    width: 500px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-highlight{
+    color: white;
+}

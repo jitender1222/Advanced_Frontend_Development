@@ -1,0 +1,18 @@
+.card{
+
+    border: 1px solid black;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:120px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: var(--yellow);
+    cursor: pointer;
+}
+
+.card:hover{
+    
+    background-color: var(--lightyellow);
+}
