@@ -51,10 +51,47 @@ Transpilers are tools that convert one programming language into another languag
 Well, all the latest javascript features are not supported in every browser yet. So someone needs to do the converting part right? So babel is here to transpile latest javascript features(ES6 features) which are not understandable to every browser to ES5 which is understandable to every browser.
 
 
-`In case of React Babel is commonly used for converting JSX syntax in React .` JSX is a syntax extension for JavaScript that allows HTML-like elements to be mixed with JavaScript code.However, not all browsers support JSX syntax.
+`In case of React Babel is commonly used for converting JSX syntax in React .` 
+
+
+### JSX 
+
+JSX is a syntax extension for JavaScript that allows `HTML-like elements` to be mixed with `JavaScript` code.However, not all browsers support JSX syntax.
 
 
 `This is where Babel comes in`. Babel in react, can take the JSX syntax in a React component and transpile it into regular JavaScript code that can be run in any browser. This process happens at build time, so the end user never sees the JSX syntax, only the compiled JavaScript. Babel has full support for JSX syntax, making it an ideal tool for converting JSX syntax in React applications.
+
+
+### `Note` -> 
+
+whenever we have to write a JS expression we can write inside `{}`.
+
+For example 
+
+```
+
+function DogType(){
+
+  const text="cute puppy";
+
+  return (
+
+    <div>
+
+    <h3>{text}</h3>
+    
+    </div>
+  )
+
+}
+
+```
+
+When we use style property inside JSX we have to use `two {}`.
+
+1. First brace is because `style property` expects a JS Object.
+
+2. Second brace is used to `evaluate` the JS expression. Beacuse as we see above any valid JS expression is written inside the `curly braces`.
 
 
 ## Memory of a Component
@@ -161,4 +198,95 @@ And so on!
 State is local to a component instance on the screen. In other words, if you render the same component twice, each copy will have completely isolated state! Changing one of them will not affect the other. 
 
 
+### `Commit and Render`
+
+**Any screen update in a React app happens in three steps:**
+
+`Trigger`
+
+`Render`
+
+`Commit`
  
+
+**Step 1: Trigger a render**
+
+There are `two` reasons for a component to render:
+
+`It’s the component’s initial render.`
+
+`The component’s (or one of its ancestors’) state has been updated.`
+
+**Initial render**
+
+When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it’s done by calling `createRoot` with the target DOM node, and then calling its render method with your component:
+
+```
+import Image from './Image.js';
+import { createRoot } from 'react-dom/client';
+
+const root = createRoot(document.getElementById('root'))
+root.render(<Image />);
+
+```
+
+
+**Re-renders when state updates**
+
+Once the component has been initially rendered, you can trigger further renders by updating its `state` with the `set function`. Updating your component’s state automatically queues a render.
+
+
+
+**Step 2: React renders your components**
+
+
+After you trigger a render, React calls your components to figure out what to display on screen. “Rendering” is React calling your components.
+
+1. On initial render, React will call the root component.
+
+2. For subsequent renders, React will call the function component whose state update triggered the render.
+
+This process is recursive: if the updated component returns some other component, React will render that component next, and if that component also returns something, it will render that component next, and so on. 
+
+The process will continue until there are no more nested components and React knows exactly what should be displayed on screen.
+
+
+```
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Inspiring Sculptures</h1>
+      <Image />
+      <Image />
+      <Image />
+    </section>
+  );
+}
+
+function Image() {
+  return (
+    <img
+      src="https://i.imgur.com/ZF6s192.jpg"
+      alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
+    />
+  );
+}
+
+```
+
+
+3. During the initial render, React will create the DOM nodes for `<section>, <h1>,` and three `<img>` tags.
+
+4. During a re-render, React will calculate which of their properties, if any, have changed since the previous render. It won’t do anything with that information until the next step, the commit phase.
+
+
+**Step 3: React commits changes to the DOM**
+
+After rendering (calling) your components, React will modify the DOM.
+
+For the initial render, React will use the appendChild() DOM API to put all the DOM nodes it has created on screen.
+
+For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+
+**`React only changes the DOM nodes if there’s a difference between renders.`**

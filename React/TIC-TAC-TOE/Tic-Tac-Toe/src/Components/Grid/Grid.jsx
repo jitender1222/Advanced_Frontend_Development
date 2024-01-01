@@ -22,7 +22,7 @@ function isWinner(board,symbol){
 function Grid({numberOfCards}){
     const [turn,setTurn]=useState(true);
     const [board,setBoard]=useState(Array(numberOfCards).fill(""));
-    const [winner,setWinner]=useState();
+    const [winner,setWinner]=useState(false);
 
     function nextTurn(index){
 
@@ -33,9 +33,11 @@ function Grid({numberOfCards}){
             board[index]="X" 
         }
         const win=isWinner(board,turn ? "O" : "X");
+        
         if(win){
             setWinner(win);
         }
+        
         setBoard([...board]);
         setTurn(!turn);
     }
@@ -59,7 +61,7 @@ function Grid({numberOfCards}){
         <>
         <h1 className="color-highlight">Current Turn: {turn ? "O" : "X"} </h1>
         <div className="grid">
-        {board.map((value,idx) => { return <Card turn={nextTurn} player={value} key={idx} index={idx} />}) }
+        {board.map((value,idx) => { return <Card gameEnd={winner ? true : false} turn={nextTurn} player={value} key={idx} index={idx} />}) }
         </div>
         </>
         </div>
