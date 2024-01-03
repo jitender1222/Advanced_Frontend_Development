@@ -26,8 +26,23 @@ dataType< variable_name >:number=< value >  // type annotation or type signature
 
 `let userId : number || string = "26";`
 
+**`Any`** -> if any variable or anything inside a Ts wants to behave just like an normal JS we can use the keyword `any`.
 
-### Defining arrays in TS
+
+`Note` -> if we want to define a variable with type any then either we can mention `": any" `while declaring the variable or do `not assign a value` while declaring it. 
+
+For example 
+
+let x : any = 10;
+
+let a;
+
+a = 10;
+
+a = "sumit"
+
+
+### Defining `Arrays` in TS
 
 let < variable_name > : type[] = [ val1,val2 .... ]
 
@@ -36,9 +51,6 @@ In the above `type means` what type of array we want to define i.e. number,strin
 let ids: `number`[]=[1,2,3,4,5];
 
 `Union` ->  let ids: (number | string | boolean)[]=[1, 2, 3, false, "jiten"];
-
-**`Any`** -> if any variable or anything inside a Ts wants to behave just like an normal JS we can use the keyword `any` 
-
 
 In the above array we can only store numbers but if we use `any` than we can store multiple things at once just like we can store in JS.
 
@@ -144,5 +156,69 @@ function sum() : void {
 
 }
 
+### Enums 
+
+These are a special type of class that is going to represent constant which cannot be changed.
 
 
+### Type inferring
+
+```
+
+const result={
+
+    name : "jitender"
+    marks: 82
+}
+
+result.marks="87";
+
+result.address="XYZ";
+
+```
+
+the above raw object is inferred as 
+
+const result:{ name: string, marks: number } = { 
+   name: "jitender" ,
+   marks: 82
+
+}
+
+TS read the code like this and it will throw an error beacuse in { name: string, marks: number } we never mentioned about any address.
+
+
+To solve this we can optionally mentioned adress property while defining the object.
+
+```
+
+const result : { name: string, marks: number, address ? : string } = { 
+   name: "jitender" ,
+   marks: 82
+
+}
+
+```
+
+### Alias
+
+const result : { name: string, marks: number, address ? : string } = { 
+   name: "jitender" ,
+   marks: 82
+
+}
+
+`type detail` = { name: string, marks: number, address ? : string }
+
+`detail` is kind of an `alias` or a nickname to { name: string, marks: number, address ? : string }
+
+```
+const result1 : detail ={
+
+    name:"jitender"
+    marks: 87
+}
+
+```
+
+ 
