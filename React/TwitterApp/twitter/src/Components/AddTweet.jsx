@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddTweet=()=>{
+const AddTweet=({onHandle})=>{
 
     const [text,setText]=useState();
 
@@ -8,9 +8,12 @@ const AddTweet=()=>{
         <>
         <input placeholder="Enter text" 
         value={text}
-        onChange={()=> setText()}
+        onChange={(e)=> setText(e.target.value)}
         />
-        <button onClick={()=> setText("")}>Tweet !!</button>
+        <button onClick={()=> {
+            setText("")
+            onHandle(text)
+            }}>Tweet !!</button>
         </>
     )
 }

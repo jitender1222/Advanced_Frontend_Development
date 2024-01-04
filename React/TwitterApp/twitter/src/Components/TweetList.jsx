@@ -7,7 +7,7 @@ const TweetList=({tweets})=>{
        <ul className="tweet-list">
         {
             tweets.map((tweet)=>(
-                <li className="twitter-wrapper">
+                <li className="twitter-wrapper" key={tweet.id}>
                     <Tweet content ={tweet.content} likeCount={tweet.likeCount}  /> 
                 </li>
             ))
