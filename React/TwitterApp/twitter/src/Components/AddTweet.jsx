@@ -1,3 +1,4 @@
+import "../Css/Tweet.css"
 import { useState } from "react";
 
 const AddTweet=({onHandle})=>{
@@ -6,11 +7,11 @@ const AddTweet=({onHandle})=>{
 
     return (
         <>
-        <input placeholder="Enter text" 
+        <input className="addTweetInput" placeholder="Enter text" 
         value={text}
         onChange={(e)=> setText(e.target.value)}
         />
-        <button onClick={()=> {
+        <button className="addTweet" onClick={()=> {
             setText("")
             onHandle(text)
             }}>Tweet !!</button>

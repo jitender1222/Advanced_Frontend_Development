@@ -13,3 +13,44 @@
 .tweet-content{
     margin-bottom: 1rem;
 }
+
+.addTweetInput{
+    padding: 10px;
+    margin-left: 41px;
+    border-radius: 10px;
+    border: 1px solid rgb(255, 0, 0);
+    width: 20%;
+}
+
+.addTweet{
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(35, 150, 221);
+    color: white;
+    border: none;
+    margin-left: 5px;
+}
+
+.tweetEditWrapper{
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.editBtn{
+
+    padding: 5px;
+    width: 20%;
+    border-radius:5px;
+    background-color: rgb(35, 150, 221);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.editBtn:hover{
+
+    background-color: rgb(0, 131, 174);
+}
