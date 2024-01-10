@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import Todo from "../Todo/Todo"
+import TodoContext from "../../context/TodoContext";
 
-function TodoList({todos,delTodos}){
+function TodoList(){
+
+    const {todos,setTodos}=useContext(TodoContext);
 
     function deleteTodo(id){
         const newTodo= todos.filter(todo => todo.id != id);
-        delTodos(newTodo)
+        setTodos(newTodo)
     }
 
     function editTodo(id,text){
@@ -14,7 +18,7 @@ function TodoList({todos,delTodos}){
             }
             return todo;
         });
-        delTodos(newTodoList);
+        setTodos(newTodoList);
     }
 
     function finished(id,state){
@@ -24,7 +28,7 @@ function TodoList({todos,delTodos}){
             }
             return todo;
         });
-        delTodos(newTodoList);
+        setTodos(newTodoList);
     }
     return (
         <>
