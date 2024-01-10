@@ -290,3 +290,15 @@ For the initial render, React will use the appendChild() DOM API to put all the 
 For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
 
 **`React only changes the DOM nodes if there’s a difference between renders.`**
+
+
+
+### Note :
+
+If parent component re render due to any reason then the child component is also re render.
+
+If in any case the props that we pass and the value of the props did not change but the parent component change then the child also re render.
+
+To avoid this we can use a hook named as `useMemo` .
+
+If we use useMemo hook even if our parent re render our child is not re render untill our props value are same.

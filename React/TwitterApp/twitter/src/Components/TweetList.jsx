@@ -1,5 +1,8 @@
+import { memo } from "react"
 import Tweet from "./Tweet"
 
+
+const MemoisedTweet=memo(Tweet);
 const TweetList=({tweets,onHandleTweet})=>{
 
     return (
@@ -9,7 +12,7 @@ const TweetList=({tweets,onHandleTweet})=>{
             tweets.map((tweet)=>(
                 console.log(tweet),
                 <li className="twitter-wrapper" key={tweet.id}>
-                    <Tweet onEdit={onHandleTweet} tweetId={tweet.id} content ={tweet.content} likeCount={tweet.likeCount}  /> 
+                    <MemoisedTweet onEdit={onHandleTweet} tweetId={tweet.id} content ={tweet.content} likeCount={tweet.likeCount}  /> 
                 </li>
             ))
         }

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { memo, useCallback, useState } from "react"
 import AddTweet from "./AddTweet"
 import TweetList from "./TweetList"
 
@@ -9,13 +9,13 @@ const initialDummyArray=[
     {id:3,content:"What are you doing today ??" , likeCount: 10 },
   ]
 
-
+const MemoisedTweet=memo(AddTweet)
 
 const Twitter=()=>{
 
     const [tweet , setTweet] = useState(initialDummyArray);
 
-    const handleTweet=(text)=>{
+    const handleTweet=useCallback((text)=>{
 
         let nextId= (tweet.length > 0) ? tweet[tweet.length-1].id+1 : 0 ; 
         setTweet([...tweet,{
@@ -23,11 +23,11 @@ const Twitter=()=>{
             likeCount: Math.floor(Math.random()*10),
             id: nextId
         }])
-    }
+    },[tweet])
 
     console.log(tweet);
 
-    const editHandle=(tweets)=>{ // this is an updated tweet
+    const editHandle=useCallback((tweets)=>{ // this is an updated tweet
 
         setTweet(
             tweet.map((currentTweet)=>{
@@ -40,11 +40,11 @@ const Twitter=()=>{
                 }
             })
         )
-    }
+    },[tweet])
 
     return (
         <>
-        <AddTweet onHandle={handleTweet} />
+        <MemoisedTweet onHandle={handleTweet} />
         <TweetList onHandleTweet={editHandle} tweets={tweet}  />
         </>
     )
