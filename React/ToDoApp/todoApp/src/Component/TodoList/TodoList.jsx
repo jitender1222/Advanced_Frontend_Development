@@ -4,31 +4,18 @@ import TodoContext from "../../context/TodoContext";
 
 function TodoList(){
 
-    const {todos,setTodos}=useContext(TodoContext);
+    const {todos,dispatch}=useContext(TodoContext);
 
     function deleteTodo(id){
-        const newTodo= todos.filter(todo => todo.id != id);
-        setTodos(newTodo)
+        dispatch({type:"delete_todo",payload:{id}})
     }
 
     function editTodo(id,text){
-        const newTodoList=todos.map((todo)=>{
-            if(todo.id === id){
-                todo.text=text;
-            }
-            return todo;
-        });
-        setTodos(newTodoList);
+        dispatch({type:"edit_todo",payload:{id,text}})
     }
 
     function finished(id,state){
-        const newTodoList=todos.map((todo)=>{
-            if(todo.id===id){
-                todo.isFinished=state;
-            }
-            return todo;
-        });
-        setTodos(newTodoList);
+        dispatch({type:"finish_todo",payload:{id,state}})
     }
     return (
         <>
