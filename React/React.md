@@ -12,6 +12,8 @@ We can make react app by using `CDN` links
 
 This is the minified version of react which means it does not contain any extra space commas it is the compact version we have .
 
+### Note -> React is declarative.
+
 
 **Here’s a step-by-step description of how minification works:**
 
