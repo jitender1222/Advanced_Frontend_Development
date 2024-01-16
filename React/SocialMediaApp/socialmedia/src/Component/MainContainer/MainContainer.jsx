@@ -16,21 +16,21 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function MainContainer() {
   return (
-    <Box display="flex" justifyContent="center" sx={{ width: '100%', mt:4 }}>
+    <Box container sx={{mt:"3rem" }}>
       <Grid
       container  
       justifyContent="center"
       alignItems="start"
-       rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid xs={0} md={6}>
-            {/* User */}
+       rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md:4 }}>
+        <Grid>
           <UserList />
         </Grid>
-        <Grid justifyContent={"center"} 
-        alignItems={"center"} 
+        <Grid
         container 
+        justifyContent="center"
+        alignItems="center"
         direction={"column"} 
-        xs={12} md={6}>
+         md={8}>
             {/* User Post */}
          <PostCardList />
         </Grid>
