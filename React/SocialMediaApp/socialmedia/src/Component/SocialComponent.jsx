@@ -1,6 +1,6 @@
 import MainContainer from "./MainContainer/MainContainer";
 import Navabar from "./Navbar/Navbar";
-import PostCard from "./PostCard";
+
 
 const SocialApp=()=>{
 
