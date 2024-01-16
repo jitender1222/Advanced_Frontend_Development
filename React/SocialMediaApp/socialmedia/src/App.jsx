@@ -1,12 +1,13 @@
-
+import SocialApp from './Component/SocialComponent'
 import './App.css'
 
 function App() {
 
   return (
-    <>
-      hello
-    </>
+
+     <>
+     <SocialApp />
+     </>
   )
 }
 
