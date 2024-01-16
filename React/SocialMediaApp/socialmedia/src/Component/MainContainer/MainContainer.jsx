@@ -3,8 +3,8 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import PostCard from '../PostCard';
 import PostCardList from '../PostCardList/PostCardList';
+import UserList from '../UserList/UserList';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,15 +22,15 @@ export default function MainContainer() {
       justifyContent="center"
       alignItems="start"
        rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid xs={1} md={3}>
+        <Grid xs={0} md={6}>
             {/* User */}
-          <Item>1</Item>
+          <UserList />
         </Grid>
         <Grid justifyContent={"center"} 
         alignItems={"center"} 
         container 
         direction={"column"} 
-        xs={11} md={9}>
+        xs={12} md={6}>
             {/* User Post */}
          <PostCardList />
         </Grid>
