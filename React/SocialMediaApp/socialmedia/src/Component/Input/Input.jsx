@@ -2,18 +2,9 @@ import Button from '@mui/material/Button';
 import {Box} from "@mui/material";
 import TextField from '@mui/material/TextField';  
 import axios from 'axios';
-import {useState } from 'react';
+import {useContext, useState } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
-
-
-// export default function InputTextField(){
-
-//   return (
-//     <>
-//     Hello world
-//     </>
-//   )
-// }
+import PostContext from '../../Provider/PostsProvider';
 
 
 export default function InputTextField() {
@@ -21,6 +12,7 @@ export default function InputTextField() {
     const [postText,setPostText]=useState("");
     const [imageUrl,setImageUrl]=useState("");
     const [loading,setLoading]=useState(false);
+    const {post,setPost}=useContext(PostContext);
 
     async function createPost(){
 
@@ -37,8 +29,9 @@ export default function InputTextField() {
           headers:{'app-id':import.meta.env.VITE_APP_ID}
         }
         ).then(response=>{
-        //   const postData=response.data;
-          console.log("post data",response);
+          // const postData=response.data;
+          // console.log("post data",response);
+          setPost([response.data,...post])
           setLoading(false);
           setPostText("");
           setImageUrl("");
@@ -66,7 +59,7 @@ export default function InputTextField() {
       />
       {
         (loading) ? <LoadingButton loading /> : <Button 
-        sx={{mt:"1rem"}} 
+        sx={{mt:"2rem"}} 
         variant='contained'
         loading
         onClick={createPost}>Submit</Button>
