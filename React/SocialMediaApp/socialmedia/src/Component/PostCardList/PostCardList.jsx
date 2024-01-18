@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import PostCard from '../PostCard';
 import PostContext from '../../Provider/PostsProvider';
 
@@ -16,5 +16,5 @@ const PostCardList=()=>{
 
 }
 
-export default PostCardList;
+export default memo(PostCardList);
 
