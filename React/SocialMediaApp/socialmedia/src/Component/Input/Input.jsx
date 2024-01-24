@@ -32,7 +32,7 @@ export default function InputTextField() {
           // const postData=response.data;
           // console.log("post data",response);
           setPost([response.data,...post])
-          setLoading(false);
+          setLoading("false");
           setPostText("");
           setImageUrl("");
         })
@@ -61,7 +61,7 @@ export default function InputTextField() {
         (loading) ? <LoadingButton loading /> : <Button 
         sx={{mt:"2rem"}} 
         variant='contained'
-        loading
+        loading="true"
         onClick={createPost}>Submit</Button>
       }
     </Box>

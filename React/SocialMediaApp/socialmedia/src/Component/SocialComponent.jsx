@@ -23,7 +23,6 @@ const SocialApp=()=>{
     return (
         <>
         <PostContext.Provider value={{post,setPost}}>
-            <Navabar />
             <InputTextField />
             <MainContainer />
         </PostContext.Provider>
