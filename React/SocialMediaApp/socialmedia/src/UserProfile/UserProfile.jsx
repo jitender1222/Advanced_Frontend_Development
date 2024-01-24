@@ -5,28 +5,11 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import useUserProfile from "../Hooks/useUserProfile";
 
 export default function MediaControlCard() {
-    const [user,setUser]=useState("");
-    const [loading,setLoading]=useState(false);
-  const theme = useTheme();
-  let {id}=useParams(); 
-  console.log("id",id);
-  useEffect(()=>{
-    setLoading(true);
-    axios.get(`https://dummyapi.io/data/v1/user/${id}`,{
-        headers:{
-            'app-id':import.meta.env.VITE_APP_ID
-        }
-    }).then((response) =>{
-        setLoading(false);
-       setUser(...response.data);
-    });
-  },[])
-
+    const theme = useTheme();
+    const [loading,user]=useUserProfile();
   return (
     <>
      {
