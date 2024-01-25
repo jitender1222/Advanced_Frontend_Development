@@ -1,0 +1,53 @@
+body{
+    background-color: beige;
+}
+
+.outer-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    padding: 10px;
+    width: 20%;
+}
+
+.inner-div input{
+    padding: 10px;
+    width: 60%;
+}
+.btn{
+    padding:12px;
+    background-color:rgb(16, 162, 162);
+    border:none;
+    border-radius:5px;
+    margin-left:1px;
+    cursor: pointer;
+    color: beige;
+}
+
+.list-items{
+    list-style: none;
+    display: flex;
+    background-color: rgb(16, 162, 162);
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-items li{
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.sub-list{
+    font-weight: bold;
+    color: beige;
+}
