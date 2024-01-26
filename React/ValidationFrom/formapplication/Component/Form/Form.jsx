@@ -1,67 +1,35 @@
-import {  useRef, useState } from "react"
 import "./Form.css"
-import emailValidation from "../Validation/emailValidation";
-import passwordValidation from "../Validation/passwordValidation";
+import Input from "../Input/Input";
+import { useContext } from "react";
+import { FormContext } from "../../provider/FormContext";
 
 const Form=()=>{
 
-    const emailRef=useRef(null);
-    const PassRef=useRef(null);
-    
-    // useEffect(()=>{
-    //     console.log("email",email.current);
-    // })
+    const {formInput}=useContext(FormContext);
 
-    const [formValue,setFromValue]=useState({
-        email:"",
-        password:""
-    })
-
-    const validateEmail=()=>{
-        const email=formValue.email;
-        if(!emailValidation(email)){
-            emailRef.current.focus();
-            console.log("email does not conatin required parameters");
-        }   
-    }
-
-    const validatePassword=()=>{
-        const password=formValue.password;
-        if(!passwordValidation(password)){
-            PassRef.current.focus();
-            console.log("password does not conatin required parameters");
-        }
-    }
-
-
-    function onhandlesubmit(e){
+    const onhandlesubmit=(e)=>{
+        console.log(formInput);
         e.preventDefault();
-       validateEmail();
-       validatePassword();
-        console.log(formValue)
     }
-
-    // function onSubmitForm(){
-    //     console.log("heklo",formValue)
-    // }
+    
     return (
         <>
         <h1>Form</h1>
         <form onSubmit={onhandlesubmit}>
         <div className="wrapper input-email-data">
-            <input type="text" 
-            placeholder="Enter Email" 
-            value={formValue.email}
-            ref={emailRef} 
-            onChange={(e)=>setFromValue({...formValue,email:e.target.value})}
+            <Input 
+            type="text"
+            id="email-input" 
+            label="email"
+            placeholder="Enter Email"
             />
         </div>
         <div className="wrapper input-password-data">
-        <input type="password" 
+        <Input
+        type="password"
+        id="password-input"
+        label="password"
         placeholder="Enter Password" 
-        value={formValue.password}
-        ref={PassRef} 
-        onChange={(e)=>setFromValue({...formValue,password:e.target.value})}
         />
         </div>
 
