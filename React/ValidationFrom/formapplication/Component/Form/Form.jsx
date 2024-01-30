@@ -1,6 +1,6 @@
 import "./Form.css"
 import Input from "../Input/Input";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { FormContext } from "../../provider/FormContext";
 
 const Form=()=>{
@@ -9,10 +9,14 @@ const Form=()=>{
     const emailRef=useRef(null);
     const passwordRef=useRef(null);
 
+    
+
     const onhandlesubmit=(e)=>{
         console.log(formInput);
         e.preventDefault();
-        emailRef.current.focus();
+        emailRef.current.shake();
+        emailRef.current.setInvalid();
+        
     }
     
     return (

@@ -1,3 +1,45 @@
-.error-input{
+/* .error-input{
     border: 1px solid red;
+}
+
+.shake{
+    animation: shakeInput linear 0.3;
+}
+
+@keyframes shakeInput {
+    0% {
+        margin-left: 0rem;
+    }
+    25% {
+        margin-left: 0.5rem;
+    }
+    75% {
+        margin-left: -5rem;
+    }
+    100% {
+        margin-left: 0rem;
+    }
+} */
+
+.error-input {
+    border: 1px solid red;
+}
+
+.shake {
+    animation: shakeInput linear 0.3s;
+}
+
+@keyframes shakeInput {
+    0% {
+        margin-left: 0rem;
+    }
+    25% {
+        margin-left: 0.5rem;
+    }
+    75% {
+        margin-left: -0.5rem;
+    }
+    100% {
+        margin-left: 0rem;
+    }
 }
