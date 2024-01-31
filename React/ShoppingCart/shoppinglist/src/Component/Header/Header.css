@@ -1,0 +1,21 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header{
+    letter-spacing: 1rem;
+    color: #2b8cbd;
+    font-family: sans-serif;
+}
+.shoppingImg{
+    width: 250px;
+    height: 250px;
+    margin-top:20px;
+}
+
+.img{
+    height: 100%;
+    width: 100%;
+}

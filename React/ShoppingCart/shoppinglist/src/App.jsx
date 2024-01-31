@@ -1,10 +1,11 @@
 import './App.css'
+import Shopping from './Component/ShoppingList/Shopping'
 
 function App() {
 
   return (
     <>
-      Hello world
+      <Shopping />
     </>
   )
 }
