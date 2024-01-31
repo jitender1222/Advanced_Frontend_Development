@@ -304,3 +304,89 @@ If in any case the props that we pass and the value of the props did not change 
 To avoid this we can use a hook named as `useMemo` .
 
 If we use useMemo hook even if our parent re render our child is not re render untill our props value are same.
+
+
+## Controlled Vs UnControlled Components
+
+**Controlled Components**
+
+In a controlled component, the state is maintained by the React component itself. This state is updated via events, usually tied to input fields in a form. This means that the value of the input field is always controlled by the state of the React component.
+Here’s a simple example of a controlled component:
+
+
+``` 
+import React, { useState } from 'react';
+
+function ControlledForm() {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`input's value: ${value}`);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={value} onChange={handleChange} />
+      <button type="submit">Submit</button>
+    </form>
+  );
+} 
+
+```
+In this example, the value state inside ControlledForm is always synchronized with the value of the input field. When the user types into the field, handleChange is called, setting the new state, which causes a re-render, and the updated value state is then reflected in the input field.
+
+
+**Note** -> The drawback to using controlled components is that the number of states in a component increases as more control elements are added to the form element.
+
+
+**Uncontrolled Components**
+
+In contrast, an uncontrolled component maintains its own internal state. This means that you query the DOM using a ref to find its current value when you need it, rather than storing it in state. This approach is closer to traditional HTML.
+
+
+```
+function App() {
+  function onSubmit() {
+    console.log("Name value: " + window.name.value);
+    console.log("Email value: " + window.email.value);
+  }
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="text" name="name" id="name" required />
+      <input type="email" name="email" id="email" required />
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
+```
+In the above code, we assigned ID attributes to the name and email input elements with values name and email, respectively. We used these id attributes to get the value of the input element when the form is being submitted.
+The above component is an uncontrolled component because React has no control over the values of the form input elements.
+
+
+## Refs
+
+When you want a component to “remember” some information, but you don’t want that information to trigger new renders, you can use a ref. By the use of refs we can access dom elements we don't have to do document.getElementId and other things.
+
+You can add a ref to your component by importing the useRef Hook from React:
+
+```
+import { useRef } from 'react';
+
+```
+
+Inside your component, call the useRef Hook and pass the initial value that you want to reference as the only argument. `For example, here is a ref to the value 0:`
+
+```
+const ref = useRef(0);
+useRef returns an object like this:
+
+{ 
+  current: 0 // The value you passed to useRef
+}
+
+```

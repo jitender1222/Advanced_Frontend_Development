@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useImperativeHandle, useRef, useState } f
 import { FormContext } from "../../provider/FormContext";
 import "../Input/input.css"
 
-const Input = React.forwardRef(({ type, id, label, placeholder},ref) => {  // if we want to use ref prop then we have to use forwardRef
+const Input = React.forwardRef(({ type, id, label, placeholder,checkonBlurr},ref) => {  // if we want to use ref prop then we have to use forwardRef
   const [text, setText] = useState("");
   const localRef=useRef(null);
-  const [isValid,setIsValid]=useState(true);
+  const [isValid,setIsValid]=useState(true); 
   const [shake,setShake]=useState(false);
 
   const { formInput, setFormInput } = useContext(FormContext);
@@ -20,10 +20,11 @@ const Input = React.forwardRef(({ type, id, label, placeholder},ref) => {  // if
 
   useEffect(()=>{
     setIsValid(true);
-
+    setShake(false);
   },[text])
 
   return (
+    <>
     <input
     className={`${!isValid ? "error-input" : ""} ${shake ? "shake" : ""}`}
     ref={localRef}
@@ -31,12 +32,15 @@ const Input = React.forwardRef(({ type, id, label, placeholder},ref) => {  // if
       placeholder={placeholder}
       id={id}
       value={text}
-
+      onBlur={checkonBlurr}
       onChange={(e) => {
         setText(e.target.value);
         setFormInput({ ...formInput, [label]: e.target.value }); // if we want to use a label as a variable from a JS object then we must enclose them inside the [] braces
       }}
     />
+    <br/>
+    <span>{ (!isValid) ? `${label} is invalid` : "" }</span>
+    </>
   );
 });
 
