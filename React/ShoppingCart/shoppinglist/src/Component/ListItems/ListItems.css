@@ -1,0 +1,33 @@
+.outer-list{
+    margin-top:30px;
+}
+
+.icon-list{
+    margin-top:20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.icon:hover{
+    color: black;
+}
+.icon-plus{
+    background-color: rgb(236, 48, 48);
+    border: none;
+    
+}
+.icon-minus{
+    background-color: rgb(5, 126, 42);
+    border: none;
+    
+}

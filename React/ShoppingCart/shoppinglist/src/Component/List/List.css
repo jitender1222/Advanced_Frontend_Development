@@ -1,8 +1,13 @@
-.list-items{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top:20px;
-    list-style: none;
-    gap: 10px;
+.list-items li{
+    margin-top:10px;
+    font-size:larger;
+    font-family: sans-serif;
+    color: rgb(166, 0, 86);
+}
+
+.list-items li span{
+   font-size:larger;
+   font-family: sans-serif;
+   color:rgb(24, 97, 161);
+   padding:10px;
 }
