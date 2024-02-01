@@ -2,8 +2,9 @@ import List from "../List/List";
 import "./ListItems.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus,faMinus} from "@fortawesome/free-solid-svg-icons";
+import { showError } from "../utils/showToast";
 
-const ListItems=({items})=>{
+const ListItems=({items,increaseQuantity,decreaseQuantity})=>{
 
     return (
         <>
@@ -12,12 +13,17 @@ const ListItems=({items})=>{
             items && items.map((item)=>{
                 return (
                     <div className="icon-list" key={item.id}>
-                     <FontAwesomeIcon className="icon icon-plus" icon={faPlus} />   
+                     <FontAwesomeIcon onClick={()=> increaseQuantity(item.id)} className="icon icon-plus" icon={faPlus} />   
                     <List  
                     name={item.name}
                     quantity={item.quantity} 
                     price={item.price}/>
-                    <FontAwesomeIcon className="icon icon-minus" icon={faMinus} />   
+                    <FontAwesomeIcon onClick={()=> {
+                        if(item.quantity==1){
+                        showError(`${item.name} is removed from the list`)
+                        }
+                        decreaseQuantity(item.id)
+                        }} className="icon icon-minus" icon={faMinus} />   
                     </div>
                 )
             }) 

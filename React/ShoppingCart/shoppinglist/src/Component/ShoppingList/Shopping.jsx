@@ -1,21 +1,43 @@
+import { useState } from "react";
 import Header from "../Header/Header";
 import Input from "../Input/Input";
 import ListItems from "../ListItems/ListItems";
+import {v4 as uuidv4} from "uuid";
 
 const Shopping=()=>{
 
-    const ShoppingItems=[
-        { id:1 ,name:"Apples",quantity:"10",price:100},
-        { id:2 ,name:"Banana",quantity:"20",price:200},
-        // { id:3 ,name:"Grapes",quantity:"30",price:300},
-        // { id:4 ,name:"Guava",quantity:"90",price:80}
-    ]
+    const [shoppingItems,setShoppingItems]=useState([]);
+
+    const addItem=(item)=>{
+        setShoppingItems([...shoppingItems,{
+            id: uuidv4(),
+            name: item,
+            quantity: 1
+        }])
+    }
+
+    const increaseQuantity=(itemId)=>{
+        const newShoppingItems=shoppingItems.map((item)=>{
+            if(item.id==itemId) item.quantity++;
+            return item;
+        });
+        setShoppingItems(newShoppingItems);
+    }
+
+    const decreaseQuantity=(itemId)=>{
+        let newShoppingItems=shoppingItems.map((item)=>{
+            if(item.id==itemId) item.quantity--;
+            return item;
+        });
+        newShoppingItems=newShoppingItems.filter((item) => item.quantity>0);
+        setShoppingItems(newShoppingItems);
+    }
 
     return (
         <>
         <Header />
-        <Input />
-        <ListItems items={ShoppingItems}/>
+        <Input addItem={addItem} />
+        <ListItems items={shoppingItems} increaseQuantity={increaseQuantity}  decreaseQuantity={decreaseQuantity} />
         </>
     )
 }
