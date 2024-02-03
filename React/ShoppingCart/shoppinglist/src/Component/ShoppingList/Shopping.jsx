@@ -1,36 +1,35 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Header from "../Header/Header";
 import Input from "../Input/Input";
 import ListItems from "../ListItems/ListItems";
-import {v4 as uuidv4} from "uuid";
+
+import itemReducer from "../reducers/reducers";
 
 const Shopping=()=>{
 
-    const [shoppingItems,setShoppingItems]=useState([]);
+    const [shoppingItems,dispatch]=useReducer(itemReducer,[]);
 
-    const addItem=(item)=>{
-        setShoppingItems([...shoppingItems,{
-            id: uuidv4(),
-            name: item,
-            quantity: 1
-        }])
+    const addItem=(itemName)=>{
+        
+        dispatch({
+            type: "add_item",
+            item:itemName
+        })
     }
 
-    const increaseQuantity=(itemId)=>{
-        const newShoppingItems=shoppingItems.map((item)=>{
-            if(item.id==itemId) item.quantity++;
-            return item;
-        });
-        setShoppingItems(newShoppingItems);
+    const increaseQuantity=(id)=>{
+        
+        dispatch({
+            type:"increaseQuantity",
+            itemId:id
+        })
     }
 
-    const decreaseQuantity=(itemId)=>{
-        let newShoppingItems=shoppingItems.map((item)=>{
-            if(item.id==itemId) item.quantity--;
-            return item;
-        });
-        newShoppingItems=newShoppingItems.filter((item) => item.quantity>0);
-        setShoppingItems(newShoppingItems);
+    const decreaseQuantity=(id)=>{
+        dispatch({
+            type:"decreaseQuantity",
+            itemId:id
+        })
     }
 
     return (
