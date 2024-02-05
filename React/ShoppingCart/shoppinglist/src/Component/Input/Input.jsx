@@ -3,14 +3,20 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Input.css"
 import { ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form"
+import { useContext } from "react";
+import { ShoppingDispatchContext } from "../providers/context";
 
 
-const Input=({addItem})=>{
+const Input=()=>{
     const { register, handleSubmit,formState: { errors }, } = useForm();
+    const dispatch=useContext(ShoppingDispatchContext);
 
     const onSubmit = (data) => {
         console.log(data);
-        addItem(data.item);
+        dispatch({
+            type: "add_item",
+            item: data.item
+        });
         showToast("Successfuly Added")
     }
 

@@ -4,39 +4,20 @@ import Input from "../Input/Input";
 import ListItems from "../ListItems/ListItems";
 
 import itemReducer from "../reducers/reducers";
+import { ShoppingDispatchContext, ShoppingListContext } from "../providers/context";
 
 const Shopping=()=>{
 
     const [shoppingItems,dispatch]=useReducer(itemReducer,[]);
-
-    const addItem=(itemName)=>{
-        
-        dispatch({
-            type: "add_item",
-            item:itemName
-        })
-    }
-
-    const increaseQuantity=(id)=>{
-        
-        dispatch({
-            type:"increaseQuantity",
-            itemId:id
-        })
-    }
-
-    const decreaseQuantity=(id)=>{
-        dispatch({
-            type:"decreaseQuantity",
-            itemId:id
-        })
-    }
-
     return (
         <>
+        <ShoppingListContext.Provider value={shoppingItems}>
+        <ShoppingDispatchContext.Provider value={dispatch}>
         <Header />
-        <Input addItem={addItem} />
-        <ListItems items={shoppingItems} increaseQuantity={increaseQuantity}  decreaseQuantity={decreaseQuantity} />
+        <Input />
+        <ListItems />
+        </ShoppingDispatchContext.Provider>
+        </ShoppingListContext.Provider>
         </>
     )
 }
