@@ -20,6 +20,14 @@ This repository serves as a reference and guide for individuals who have taken t
 
 Please refer to the course materials and lectures provided by Sanket Singh for detailed information on each of these topics.[Course Link](https://courses.algocamp.io/learn/Frontend-Development-With-ReactJS)
 
+2. Css3
+
+3. JavaScript
+
+4. React JS
+
+5. Redux (ongoing)
+
 <!-- ## Getting Started
 
 To get started with the frontend development content taught by Sanket Singh, follow these steps:

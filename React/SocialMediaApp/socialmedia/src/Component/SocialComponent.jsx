@@ -1,6 +1,5 @@
 import InputTextField from "./Input/Input";
 import MainContainer from "./MainContainer/MainContainer";
-import Navabar from "./Navbar/Navbar";
 import PostContext from "../Provider/PostsProvider";
 import { useEffect, useState } from "react";
 import axios from "axios";
