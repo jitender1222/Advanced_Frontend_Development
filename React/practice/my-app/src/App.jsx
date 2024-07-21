@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Geo from './component/Geolocation';
-import useGeolocation from './component/Location';
+import GeolocationContainer from './component/GeoLocationContainer';
+import NewGeolocation from './component/NewGeolocation';
 
 function App() {
-  console.log("rendered")
+
+  const GeolocationUI=GeolocationContainer(Geo);
   
   return (
     <>
-    <Geo />
+    <GeolocationUI />
     </>
   )
 }
